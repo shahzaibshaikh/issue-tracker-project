@@ -1,6 +1,5 @@
 "use client";
 import "easymde/dist/easymde.min.css";
-import SimpleMDE from "react-simplemde-editor";
 import { TextField, Button, Callout, Text } from "@radix-ui/themes";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
@@ -11,6 +10,9 @@ import { createIssueSchema } from "@/app/validationSchema";
 import { TypeOf, z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
+import dynamic from "next/dynamic";
+
+const SimpleMDE = dynamic(() => import("react-simplemde-editor"), { ssr: false });
 
 type IssueForm = z.infer<typeof createIssueSchema>;
 
@@ -39,7 +41,7 @@ const NewIssue = () => {
   });
 
   return (
-    <div className='max-w-x3 '>
+    <div className='max-w-xl '>
       {error && (
         <Callout.Root color='red' className='mb-5'>
           <Callout.Text>{error}</Callout.Text>
