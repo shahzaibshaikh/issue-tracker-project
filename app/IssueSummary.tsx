@@ -22,7 +22,7 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
   return (
     <Flex gap='4'>
       {statuses.map(status => (
-        <Card key={status.label}>
+        <Card key={status.label} size='4'>
           <Flex direction='column' gap='1'>
             <Link
               className='text-sm font-medium'
@@ -30,7 +30,7 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
             >
               {status.label}
             </Link>
-            <Text size='5' className='font-bold'>
+            <Text size='8' className='font-bold'>
               {status.value}
             </Text>
           </Flex>
